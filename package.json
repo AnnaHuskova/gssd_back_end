@@ -4,8 +4,8 @@
   "description": "Green Spaces Strategy Development backend",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node ./server.js",
-    "start:dev": "cross-env NODE_ENV=development nodemon ./server.js",
+    "start": "cross-env NODE_ENV=production node --loader ts-node/esm ./server.ts",
+    "start:dev": "cross-env NODE_ENV=development nodemon --exec node --loader ts-node/esm ./server.ts",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint --fix **/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -35,7 +35,8 @@
   },
   "devDependencies": {
     "eslint": "^9.3.0",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2"
   },
   "browserslist": {
     "production": [
