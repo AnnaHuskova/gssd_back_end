@@ -22,14 +22,3 @@ mongoose
     console.error("ERROR ", err);
     process.exit(1);
   });
-
-// try {
-//   app.listen(PORT);
-
-//   console.log(
-//     `Server running. Use our API on port: ${PORT}. Press [Ctrl + C] in terminal to stop it.`
-//   );
-// } catch (err) {
-//   console.error("ERROR ", err);
-//   process.exit(1);
-// }

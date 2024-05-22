@@ -50,8 +50,7 @@ async function getAllDistrictsJson(request: Request, response: Response): Promis
 }
 
 async function getAllDistricts(request: Request, response: Response): Promise<void> {
-  const district/*:Feature[]*/ = await District.find();
-  console.log(district);
+  const district:Feature[] = await District.find();
   if (!district.length) {
     throw createError(404, `No district shapes found`);
   }
@@ -63,27 +62,6 @@ async function getAllDistricts(request: Request, response: Response): Promise<vo
       district,
     },
   });
-
-  // const publicPath = nodePath.resolve("./public/Boroughs.json");
-  // try {
-  //   const districts = await nodeFS.readFile(publicPath, {
-  //     encoding: "utf-8",
-  //   });
-  //   const districtsArray = (JSON.parse(districts) as FeatureCollection).features;
-
-  //   response.json({
-  //     status: "Success",
-  //     code: 200,
-  //     message: "Districts retrieved",
-  //     data: {
-  //       districts: districtsArray,
-  //     },
-  //   })
-  // }
-  // catch (error) {
-  //   console.error(error);
-  //   return undefined;
-  // }
 }
 
 export {

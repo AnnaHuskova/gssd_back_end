@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 // const Joi = require("joi");
 
-const districtSchema = new Schema({
+const greenAreaSchema = new Schema({
   type: {
     type: String,
     default: "Feature",
@@ -24,10 +24,6 @@ const districtSchema = new Schema({
     }),
     required: true,
   },
-  id: {
-    type: String,
-    unique: true,
-  },  
 });
 
 // const joiUserParamsSchema = Joi.object({
@@ -38,9 +34,12 @@ const districtSchema = new Schema({
 //   bloodType: Joi.string().required(),
 // });
 
-const District = model("District", districtSchema, "districts");
+/**
+ * name, schema, name of respective collection in MongoDB
+ */
+const GreenArea = model("GreenArea", greenAreaSchema, "green-areas");
 
 export {
-  District,
+  GreenArea,
   /*joiUserParamsSchema*/
 };

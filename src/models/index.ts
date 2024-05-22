@@ -7,12 +7,7 @@
 // } = require("./user");
 
 import { District, /*joiUserParamsSchema*/ } from "./district";
-
-// const {
-//   Diary,
-//   joiSchemaProductAdd,
-//   joiSchemaProductDelete,
-// } = require("./diary");
+import { GreenArea, /*joiUserParamsSchema*/ } from "./greenArea";
 
 export {
   // User,
@@ -20,9 +15,7 @@ export {
   // joiSchemaLogin,
   // Session,
   // joiRefreshTokensSchema,
-  District,
   // joiUserParamsSchema,
-  // Diary,
-  // joiSchemaProductAdd,
-  // joiSchemaProductDelete,
+  District,
+  GreenArea,
 };

@@ -11,6 +11,7 @@ const router = express.Router();
 //   ctrlWrapper(productsCtrl.getCaloriesAndNotAllowedProducts)
 // );
 
+//Subroutes for API end point
 router.get("/", ctrlWrapper(districtsCtrl.getAllDistricts));
 
 export default router;
