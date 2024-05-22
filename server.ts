@@ -1,7 +1,7 @@
-import app from "./app.js";
+import app from "./app";
 import mongoose from "mongoose";
 
-import { DB_HOST, PORT } from "./src/helpers/env.js";
+import { DB_HOST, PORT } from "./src/helpers/env";
 
 // mongoose
 //   .connect(DB_HOST)
