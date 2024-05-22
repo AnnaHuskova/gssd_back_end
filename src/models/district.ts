@@ -1,24 +1,38 @@
 import { Schema, model } from "mongoose";
 // const Joi = require("joi");
 
-const districtSchema = undefined; /*Schema({
-  categories: {
-    type: Array,
+const districtSchema = new Schema({
+  type: {
+    type: String,
+    default: "Feature",
   },
-  weight: {
-    type: Number,
+  properties: {
+    type: Schema.Types.Mixed,
+    required: true,
   },
-  title: Schema({
-    ru: { type: String, index: true },
-    ua: { type: String, index: true },
-  }),
-  calories: {
-    type: Number,
+  geometry: {
+    type: new Schema({
+      type: {
+        type: String,
+        default: "Polygon",
+        required: true,
+      },
+      coordinates: {
+        type: Array,
+        required: true,
+      },
+    }),
+    required: true,
   },
-  groupBloodNotAllowed: {
-    type: Array,
-  },
-});*/
+  // title: new Schema({
+  //   ru: { type: String, index: true },
+  //   ua: { type: String, index: true },
+  // }),
+  id: {
+    type: String,
+    unique: true,
+  },  
+});
 
 // const joiUserParamsSchema = Joi.object({
 //   height: Joi.string().required(),
@@ -28,7 +42,7 @@ const districtSchema = undefined; /*Schema({
 //   bloodType: Joi.string().required(),
 // });
 
-const District = model("districts", districtSchema);
+const District = model("district", districtSchema);
 
 export {
   District,
