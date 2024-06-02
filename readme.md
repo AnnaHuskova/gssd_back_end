@@ -27,6 +27,8 @@ The command builds a Docker image with the name `green-spaces-backend` and tag `
 
 ## Run docker container
 
+Copy the template for the environment variable files:
+
 ```bash
 cp .env.template .env
 ```
