@@ -4,8 +4,8 @@
   "description": "Green Spaces Strategy Development backend",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node ./server.js",
-    "start:dev": "cross-env NODE_ENV=development nodemon ./server.js",
+    "start": "cross-env NODE_ENV=production tsx ./server.ts",
+    "start:dev": "cross-env NODE_ENV=development nodemon --exec tsx ./server.ts",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint --fix **/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -30,10 +30,14 @@
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "geojson": "^0.5.0",
     "mongoose": "^8.4.0",
+    "tsx": "^4.10.5",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/geojson": "^7946.0.14",
     "eslint": "^9.3.0",
     "nodemon": "^3.1.0"
   },
