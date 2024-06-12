@@ -10,8 +10,8 @@ Tech stack:
 
 Launches on port 3000 by default unless instructed otherwise. Skeleton Rest API has two GET endpoints:
 
-- `/api/districts`, returns an array of GeoJSON Features containing shapes for admin borders
-- `/api/green-areas`, returns an array of GeoJSON Features containing shapes for green areas
+- `/api/districts`, returns an array of JSON Features containing shapes for admin borders
+- `/api/green-areas`, returns an array of JSON Features containing shapes for green areas
 
 <!-- ### Access to api DOCS by link:
 
@@ -37,4 +37,25 @@ Specify the environment variables in the `.env` file. Then run locally the follo
 
 ```bash
 docker run -p 3000:3000 --env-file=.env green-spaces-backend:v1
+```
+
+## Images in the GitHub Container Registry
+
+The image is also available on GitHub Container Registry. You may find it [here](https://github.com/AnnaHuskova/gssd_back_end/pkgs/container/green-spaces-backend). Images are created automatically after each push, merge pull request. There are several tags available:
+
+- `latest` — the latest version of the image
+- `sha-<commit_sha>` — the image built from the specific commit
+- `<branch_name>` — the image built from the specific branch
+- `pr-<pull_request_number>` — the image built from the specific pull request (generates automatically after the pull request is merged)
+
+To pull the image from the GitHub Container Registry, use the following command:
+
+```shell
+docker pull ghcr.io/annahuskova/green-spaces-backend:<tag>
+```
+
+To run the container with the image from the GitHub Container Registry, use the following command:
+
+```shell
+docker run -p 3000:3000 --env-file=.env ghcr.io/annahuskova/green-spaces-backend:<tag>
 ```
