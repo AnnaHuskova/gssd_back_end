@@ -1,7 +1,7 @@
-import districtRoutes from "./districtRoutes";
-import greenAreaRoutes from "./greenAreaRoutes";
+import districts from "./districts";
+//import green_areas from "./green_areas";
 
 export default {
-  districtRoutes,
-  greenAreaRoutes,
+  districts,
+  //green_areas,
 };
