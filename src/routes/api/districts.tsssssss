@@ -24,7 +24,7 @@ const GET: Operation = [
 
 GET.apiDoc = {
   description: 'Retrieve district borders for a city.',
-  //tags: ['district'],
+  tags: ['district'],
   operationId: 'getAllDistricts',
   // parameters for this operation
   parameters: [
@@ -37,34 +37,21 @@ GET.apiDoc = {
   ],
   responses: {
     200: {
-      description: "District borders for the requested city as an array of GeoJSON Features",
-      content: {
-        "application/json": {
-          schema: {
-            type: "array",
-              items: {
-               $ref: "#/components/schemas/District",
-              /*type: "array",
-              items: {
-                //$ref: '#/components/schemas/User'
-                type: "string",
-                properties: {
-                  type: "any",
-                },*/
-              }
+      description: "District borderd for the requested city as an array of GeoJSON Features",
+      schema: {
+        type: "array",
+        items: {
+          $ref: "#/components/schemas/District",
+          /*type: "array",
+          items: {
+            //$ref: '#/components/schemas/User'
+            type: "string",
+            properties: {
+              type: "any",
+            },*/
           }
-        }
-    }
-      
-  },
-/*
-    status: "Success",
-    code: 200,
-    message: "District shapes found",
-    data: {
-      district,
+      }
     },
-    */
     default: {
       description: "Error, probably"
     //   $ref: '#/components/schemas/Error'
@@ -77,7 +64,7 @@ let operations = {
 }
 
 
-// const router = express.Router();
+const router = express.Router();
 
 // router.post(
 //   "/",
