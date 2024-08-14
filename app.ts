@@ -24,6 +24,7 @@ app.options("*", cors(corsOptions));
 // app.use("/api/", swaggerRouter);
 app.use("/api/districts", cors(corsOptions), routes.districtRoutes);
 app.use("/api/green-areas", cors(corsOptions), routes.greenAreaRoutes);
+app.use("/api/forms", cors(corsOptions), routes.formRoutes);
 // app.use("/api/users", usersRouter);
 
 //Route 404
@@ -34,6 +35,7 @@ app.use((req, res) => {
 //Error handler
 app.use((err, req, res, next) => {
   const { status = 500, message = "Internal Server Error" } = err;
+  console.error(`${status}: ${message}`);
   res.status(status).json({ message });
 });
 

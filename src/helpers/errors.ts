@@ -6,7 +6,7 @@
  */
 function createError(status: number, message: string) {
   const err = new Error();
-  // err.status = status;
+  (err as Record<string, any>)["status"] = status;
   err.message = message;
   return err;
 };
