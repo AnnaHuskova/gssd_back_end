@@ -2,12 +2,14 @@ import { Form } from "../../models";
 import createError from "../../helpers/errors";
 import { Request, Response } from "express";
 import nodeFS from "fs/promises";
+import fs from "fs";
+import nodeStream from "stream/promises";
 import nodePath from "path";
 
 interface FormItem {
   city: string,
   type: string,
-  file: Buffer,
+  file: fs.ReadStream,
 }
 
 async function getForm(request: Request, response: Response): Promise<void> {
@@ -23,14 +25,16 @@ async function getForm(request: Request, response: Response): Promise<void> {
   let formItem: FormItem|null = null;
 
   try {
-    const form = await nodeFS.readFile(`${publicPath}/${city}/${type}.pdf`, {
-      encoding: "utf-8",
-    });
+    // const form = await nodeFS.readFile(`${publicPath}/${city}/${type}.jpg`, {
+    //   encoding: null,
+    // });
+    const fileStream = fs.createReadStream(`${publicPath}/${city}/${type}.jpg`);
+    //const form = fileStream. //nodeStream.pipeline. .createReadStream('./big.file')
 
     formItem = {
       city,
       type,
-      file: Buffer.from(form, "utf-8"),
+      file: fileStream,
     }
   }
   catch(error) {
@@ -41,14 +45,34 @@ async function getForm(request: Request, response: Response): Promise<void> {
   if (formItem === null) {
     throw createError(404, `No form for city ${city} with type ${type} found`);
   }
-  response.json({
-    status: "Success",
-    code: 200,
-    message: "Form found",
-    data: {
-      formItem,
-    },
-  });
+  response.setHeader('Content-Type', 'image/jpeg'); //application/pdf
+  response.setHeader('Content-Disposition', `attachment; filename=${type + '.jpg'}`);
+
+  // Decode the BSON data into a Buffer object
+  //const buffer = formItem.file//.toString("base64");
+  // Set the Content-Length header
+  //response.setHeader('Content-Length', buffer.length.toString());
+
+
+  
+  // Write the file data to the response's 'write' method
+  //response.write(buffer);
+  formItem.file.pipe(response);
+
+    // Send the response to the client
+    // response.end();
+  // } catch (err) {
+  //   response.status(500).end();
+  // }
+
+  // response.json({
+  //   status: "Success",
+  //   code: 200,
+  //   message: "Form found",
+  //   data: {
+  //     formItem,
+  //   },
+  // });
 }
 
 export {
