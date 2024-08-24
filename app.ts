@@ -24,7 +24,7 @@ app.options("*", cors(corsOptions));
 // app.use("/api/", swaggerRouter);
 app.use("/api/districts", cors(corsOptions), routes.districtRoutes);
 app.use("/api/green-areas", cors(corsOptions), routes.greenAreaRoutes);
-// app.use("/api/users", usersRouter);
+app.use("/api/health", cors(corsOptions), routes.healthCheck);
 
 //Route 404
 app.use((req, res) => {
