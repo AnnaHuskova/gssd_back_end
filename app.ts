@@ -24,6 +24,11 @@ app.use("/api/districts", routes.districtRoutes);
 app.use("/api/green-areas", routes.greenAreaRoutes);
 app.use("/api/health", routes.healthCheck);
 
+// Route to simulate a 500 error for testing
+app.get('/api/error-route', (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  next(new Error('Internal Server Error'));
+});
+
 // Handle 404 error
 app.use((req, res, next) => {
   next(createError(404, "Nothing here. Do you know da wae?"));

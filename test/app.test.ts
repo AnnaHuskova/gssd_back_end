@@ -30,6 +30,14 @@ describe('Express App', () => {
     // Here you can add more expectations depending on what your health check returns
   });
 
+  // Tests for API error handling
+  it('should handle API errors', async () => {
+    // We assume this route will throw an error
+    const response = await request(app).get('/api/error-route');
+    expect(response.status).toBe(500);
+    expect(response.body).toEqual({ message: "Internal Server Error" });
+  });
+
   // // Tests for /api/districts
   // describe('/api/districts', () => {
   //   it('should respond to GET request', async () => {
@@ -52,11 +60,4 @@ describe('Express App', () => {
   //   // Add more tests for other methods (POST, PUT, DELETE) if any
   // });
 
-  // // Tests for API error handling
-  // it('should handle errors', async () => {
-  //   // We assume this route will throw an error
-  //   const response = await request(app).get('/api/error-route');
-  //   expect(response.status).toBe(500);
-  //   expect(response.body).toEqual({ message: "Internal Server Error" });
-  // });
 });
