@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import createError from "./src/helpers/errors.js";
+import createError from "./src/helpers/errors";
 import routes from "./src/routes/api";
 
 const app = express();
