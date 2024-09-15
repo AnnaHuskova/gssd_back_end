@@ -1,39 +1,38 @@
 import express from "express";
-// const logger = require("morgan");
 import cors from "cors";
 import createError from "./src/helpers/errors.js";
-
 import routes from "./src/routes/api";
 
 const app = express();
-
 const logFormat = app.get("env") === "development" ? "dev" : "short";
 
+// CORS Configuration
 const corsOptions: cors.CorsOptions = {
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000', // Replace with your frontend URL
   optionsSuccessStatus: 200,
-}
+  credentials: true, // Allows sending cookies and authentication headers
+};
 
-// app.use(logger(logFormat));
-//app.use(cors());
+// Use CORS globally
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(express.static("public"));
 
-app.options("*", cors(corsOptions));
+// API routes
+app.use("/api/districts", routes.districtRoutes);
+app.use("/api/green-areas", routes.greenAreaRoutes);
+app.use("/api/health", routes.healthCheck);
 
-//List of valid REST api routes
-// app.use("/api/", swaggerRouter);
-app.use("/api/districts", cors(corsOptions), routes.districtRoutes);
-app.use("/api/green-areas", cors(corsOptions), routes.greenAreaRoutes);
-app.use("/api/health", cors(corsOptions), routes.healthCheck);
-
-//Route 404
-app.use((req, res) => {
-  throw createError(404, "Nothing here. Do you know da wae?");
+// Handle 404 error
+app.use((req, res, next) => {
+  next(createError(404, "Nothing here. Do you know da wae?"));
 });
 
-//Error handler
-app.use((err, req, res, next) => {
-  const { status = 500, message = "Internal Server Error" } = err;
+// Error handler
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  const status = err.status || 500;
+  const message = err.message || "Internal Server Error";
   res.status(status).json({ message });
 });
 
