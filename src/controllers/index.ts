@@ -1,9 +1,9 @@
 import districtsCtrl from "./districts";
 import greenAreasCtrl from "./green-areas";
-import formsCtrl from "./forms";
+import takeawayCtrl from "./takeaway";
 
 export {
   districtsCtrl,
   greenAreasCtrl,
-  formsCtrl,
+  takeawayCtrl,
 };

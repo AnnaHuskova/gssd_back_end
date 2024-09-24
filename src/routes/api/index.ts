@@ -1,9 +1,9 @@
 import districtRoutes from "./districtRoutes";
 import greenAreaRoutes from "./greenAreaRoutes";
-import formRoutes from "./formRoutes";
+import takeawayRoutes from "./takeawayRoutes";
 
 export default {
   districtRoutes,
   greenAreaRoutes,
-  formRoutes,
+  takeawayRoutes,
 };

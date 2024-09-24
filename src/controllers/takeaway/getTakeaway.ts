@@ -12,7 +12,7 @@ interface FormItem {
   file: fs.ReadStream,
 }
 
-async function getForm(request: Request, response: Response): Promise<void> {
+async function getTakeaway(request: Request, response: Response): Promise<void> {
   const {city, type} = request.query as Record<string, string>;
   if(city === undefined || type === undefined) {
     throw createError(400, "Missing request parameters");
@@ -20,7 +20,7 @@ async function getForm(request: Request, response: Response): Promise<void> {
   }
   // const formItem: FormItem|null = await Form.findOne({city: city, type: type});
 
-  const publicPath = nodePath.resolve("./public/forms");
+  const publicPath = nodePath.resolve("./public/takeaway");
 
   let formItem: FormItem|null = null;
 
@@ -45,8 +45,8 @@ async function getForm(request: Request, response: Response): Promise<void> {
   if (formItem === null) {
     throw createError(404, `No form for city ${city} with type ${type} found`);
   }
-  response.setHeader('Content-Type', 'image/jpeg'); //application/pdf
-  response.setHeader('Content-Disposition', `attachment; filename=${type + '.jpg'}`);
+  response.setHeader('Content-Type', 'application/pdf'); //image/jpeg
+  response.setHeader('Content-Disposition', `attachment; filename=${type + '.pdf'}`);
 
   // Decode the BSON data into a Buffer object
   //const buffer = formItem.file//.toString("base64");
@@ -76,5 +76,5 @@ async function getForm(request: Request, response: Response): Promise<void> {
 }
 
 export {
-  getForm,
+  getTakeaway,
 };
