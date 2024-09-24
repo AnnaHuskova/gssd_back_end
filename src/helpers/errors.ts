@@ -4,10 +4,16 @@
  * @param message Text message to attack to the code
  * @returns 
  */
+class CustomError extends Error {
+  status: number;
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+  }
+}
+
 function createError(status: number, message: string) {
-  const err = new Error();
-  (err as Record<string, any>)["status"] = status;
-  err.message = message;
+  const err = new CustomError(status, message);
   return err;
 };
 
