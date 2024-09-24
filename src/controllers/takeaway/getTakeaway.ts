@@ -28,6 +28,7 @@ async function getTakeaway(request: Request, response: Response): Promise<void> 
     // const form = await nodeFS.readFile(`${publicPath}/${city}/${type}.jpg`, {
     //   encoding: null,
     // });
+    const hasAccess = await nodeFS.access(`${publicPath}/${city}/${type}`); //test file for access
     const fileStream = fs.createReadStream(`${publicPath}/${city}/${type}`);
     //const form = fileStream. //nodeStream.pipeline. .createReadStream('./big.file')
 
