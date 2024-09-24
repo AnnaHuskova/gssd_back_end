@@ -28,7 +28,7 @@ async function getTakeaway(request: Request, response: Response): Promise<void> 
     // const form = await nodeFS.readFile(`${publicPath}/${city}/${type}.jpg`, {
     //   encoding: null,
     // });
-    const fileStream = fs.createReadStream(`${publicPath}/${city}/${type}.jpg`);
+    const fileStream = fs.createReadStream(`${publicPath}/${city}/${type}`);
     //const form = fileStream. //nodeStream.pipeline. .createReadStream('./big.file')
 
     formItem = {
@@ -46,7 +46,7 @@ async function getTakeaway(request: Request, response: Response): Promise<void> 
     throw createError(404, `No form for city ${city} with type ${type} found`);
   }
   response.setHeader('Content-Type', 'application/pdf'); //image/jpeg
-  response.setHeader('Content-Disposition', `attachment; filename=${type + '.pdf'}`);
+  response.setHeader('Content-Disposition', `attachment; filename=${type}`);
 
   // Decode the BSON data into a Buffer object
   //const buffer = formItem.file//.toString("base64");
