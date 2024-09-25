@@ -57,6 +57,9 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
+          context: git
+          flavor: |
+            latest=true
           tags: |
             type=ref,event=branch
             type=ref,prefix=pr-,event=pr
