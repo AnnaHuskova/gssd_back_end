@@ -7,8 +7,8 @@
     "start": "cross-env NODE_ENV=production tsx ./server.ts",
     "start:dev": "cross-env NODE_ENV=development nodemon --exec tsx ./server.ts",
     "debug": "cross-env NODE_ENV=development nodemon --exec tsx --inspect=0.0.0.0:9229 ./server.ts ",
-    "lint": "eslint **/*.js",
-    "lint:fix": "eslint --fix **/*.js",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "test": "jest --detectOpenHandles"
   },
   "jest": {

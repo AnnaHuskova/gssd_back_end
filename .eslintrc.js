@@ -1,4 +1,4 @@
-module.exports = {
+export const options = {
   env: {
     commonjs: true,
     es2021: true,
