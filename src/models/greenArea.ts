@@ -26,14 +26,6 @@ const greenAreaSchema = new Schema({
   },
 });
 
-// const joiUserParamsSchema = Joi.object({
-//   height: Joi.string().required(),
-//   age: Joi.string().required(),
-//   currentWeight: Joi.string().required(),
-//   desiredWeight: Joi.string().required(),
-//   bloodType: Joi.string().required(),
-// });
-
 /**
  * name, schema, name of respective collection in MongoDB
  */

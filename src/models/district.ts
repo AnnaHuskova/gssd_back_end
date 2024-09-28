@@ -30,14 +30,6 @@ const districtSchema = new Schema({
   },  
 });
 
-// const joiUserParamsSchema = Joi.object({
-//   height: Joi.string().required(),
-//   age: Joi.string().required(),
-//   currentWeight: Joi.string().required(),
-//   desiredWeight: Joi.string().required(),
-//   bloodType: Joi.string().required(),
-// });
-
 const District = model("District", districtSchema, "districts");
 
 export {

@@ -19,9 +19,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static("public"));
 
-// API routes
+//List of valid REST api routes
 app.use("/api/districts", routes.districtRoutes);
 app.use("/api/green-areas", routes.greenAreaRoutes);
+app.use("/api/takeaway", routes.takeawayRoutes);
 app.use("/api/health", routes.healthCheck);
 
 // Route to simulate a 500 error for testing
