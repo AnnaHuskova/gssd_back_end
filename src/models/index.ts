@@ -8,6 +8,7 @@
 
 import { District, /*joiUserParamsSchema*/ } from "./district";
 import { GreenArea, /*joiUserParamsSchema*/ } from "./greenArea";
+import { Participant } from "./participant";
 import {Form} from "./form";
 
 export {
@@ -19,5 +20,6 @@ export {
   // joiUserParamsSchema,
   District,
   GreenArea,
+  Participant,
   Form,
 };

@@ -22,6 +22,7 @@ app.use(express.static("public"));
 //List of valid REST api routes
 app.use("/api/districts", routes.districtRoutes);
 app.use("/api/green-areas", routes.greenAreaRoutes);
+app.use("/api/participants", routes.participantRoutes);
 app.use("/api/takeaway", routes.takeawayRoutes);
 app.use("/api/health", routes.healthCheck);
 
